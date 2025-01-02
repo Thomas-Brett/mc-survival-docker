@@ -1,0 +1,35 @@
+services:
+  mc:
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+      - "19132:19132/udp"
+    environment:
+      TYPE: "FABRIC"
+      VERSION: "1.21.4"
+      EULA: "TRUE"
+      DIFFICULTY: "HARD"
+      MEMORY: "16G"
+      WHITELIST: |
+        imepicmelon
+        imepicmelon2
+        stormx498
+        trendkilla
+        nexus498
+      ENFORCE_WHITELIST: "true"
+      MAX_PLAYERS: "10"
+      ICON: "https://www.thetimes.com/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F4ed07e64-7284-4124-8aa8-214aa8a2b5db.jpg?crop=2793%2C2793%2C533%2C0"
+      MOTD: "Melon Survival Server"
+      SPAWN_PROTECTION: "0"
+      SIMULATION_DISTANCE: "16"
+      VIEW_DISTANCE: "32"
+      LOG_IPS: "true"
+    volumes:
+      - world:/data/world
+      - ./data:/data
+      - ./mods:/data/mods
+
+volumes:
+  world:
